@@ -1,8 +1,11 @@
 import React from 'react'
 import AutoCompleteFieldComponent from './AutoCompleteFieldComponent'
 import TableComponent from './TableComponent'
+import useCitiesData from '../hooks/useCitiesData'
+
 
 const Body = () => {
+  useCitiesData()
   return (
     <div>
         <div className="m-16  border-4 border-black ">
