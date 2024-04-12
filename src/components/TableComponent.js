@@ -8,7 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 
 const columns = [
@@ -42,7 +42,10 @@ const columns = [
 //     {name:'China',code: 'CN',population: 1403500365},
 // ];
 
-export default function TableComponent() {
+export default function TableComponent(props) {
+
+    // const {cityid} = props;
+
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
@@ -58,10 +61,17 @@ export default function TableComponent() {
         setPage(0);
     };
 
+    
+const {id} = useParams();
+
     return (
         <div>
 
-            
+            {/* {
+                rows.map((data)=>({
+                    cityid : data.geoname_id
+                }))
+            } */}
 
         <Paper sx={{ width: '100%', overflow: 'hidden' }}>
             <TableContainer sx={{ maxHeight: 440 }}>
@@ -71,6 +81,7 @@ export default function TableComponent() {
                             {columns.map((column) => (
                                 <TableCell
                                     key={column.id}
+                                    // otherKey={cityid}
                                     align={column.align}
                                     style={{ minWidth: column.minWidth }}
                                 >
@@ -90,7 +101,7 @@ export default function TableComponent() {
                                             return (
 
                                                 <TableCell key={column.id} align={column.align}>
-                                                    <a href='/'>
+                                                    <a href={`/${id}`}>
                                                         {column.format && typeof value === 'number'
                                                             ? column.format(value)
                                                             : value}
