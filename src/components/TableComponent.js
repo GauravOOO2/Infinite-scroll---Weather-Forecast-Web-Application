@@ -42,7 +42,7 @@ const columns = [
 //     {name:'China',code: 'CN',population: 1403500365},
 // ];
 
-export default function TableComponent(props) {
+export default function TableComponent() {
 
     // const {cityid} = props;
 
@@ -51,6 +51,7 @@ export default function TableComponent(props) {
 
 
     const rows = useSelector((store) => store.Countries.countryNames)
+    console.log(rows);
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
@@ -62,7 +63,7 @@ export default function TableComponent(props) {
     };
 
     
-const {id} = useParams();
+// const {id} = useParams();
 
     return (
         <div>
@@ -99,13 +100,17 @@ const {id} = useParams();
                                         {columns.map((column) => {
                                             const value = row[column.id];
                                             return (
-
+                                               
                                                 <TableCell key={column.id} align={column.align}>
-                                                    <a href={`/${id}`}>
+
+                                                    <Link to={'/WhetherPage/'+row.geoname_id} 
+                                                    >
                                                         {column.format && typeof value === 'number'
                                                             ? column.format(value)
                                                             : value}
-                                                    </a>
+                                                    
+                                                    </Link>
+
                                                 </TableCell>
 
                                             );
