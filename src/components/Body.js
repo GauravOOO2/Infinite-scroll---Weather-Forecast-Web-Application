@@ -10,10 +10,10 @@ const Body = () => {
   useWhetherData()
 
   return (
-    <div>
+    <div className='' >
         <div className="m-16  border-4 border-black ">
       
-      <div className='flex justify-center p-5 ' >
+      <div className='flex justify-center p-3 bg-white ' >
       <AutoCompleteFieldComponent  />
       </div>
 

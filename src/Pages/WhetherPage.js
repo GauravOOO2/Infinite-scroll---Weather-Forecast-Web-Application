@@ -6,6 +6,7 @@ import useWhetherData from '../hooks/useWhetherData';
 import { useDispatch } from 'react-redux';
 import { updateWhetherState } from '../util/WhetherSlice';
 import { WhetherApiUrl } from '../util/Constants'
+import { IconUrl } from '../util/Constants';
 
 
 const WhetherPage = () => {
@@ -16,10 +17,10 @@ const WhetherPage = () => {
   const [WhetherData, setWhetherData] = useState({})
   // console.log(WhetherData)
 
-  const data = useSelector((store) => store.Countries.countryNames)
+  const data = useSelector((store) => store?.Countries?.countryNames)
 
-  const whetherData = useSelector((store) => store.Whether.WhetherState)
-  console.log("Selector Debug", whetherData)
+  const whetherData = useSelector((store) => store?.Whether?.WhetherState)
+  console.log("Whether data from Slice", whetherData)
 
 
   const { geoname_id } = useParams();
@@ -41,11 +42,11 @@ const WhetherPage = () => {
     try {
       const data = await fetch(WhetherApiUrl + '&lat=' + cityData?.coordinates?.lat + '&lon=' + cityData?.coordinates?.lon);
       const jsondata = await data.json()
-      console.log("Debug",jsondata)
+      console.log("Whether Data When Fetched", jsondata)
       dispatch(updateWhetherState(jsondata))
 
     } catch (error) {
-      console.log("Fetch Unsuccessful. " + error)
+      console.log("Fetch Unsuccessful. ", error)
     }
   }
 
@@ -55,39 +56,42 @@ const WhetherPage = () => {
 
 
   return (
-    <div>
-      <h1>{cityData?.name} weather data</h1>
-      <h2> {cityData?.name} </h2>
+    <div className='  w-1/3  mt-32  ml-auto mr-auto text-white		 ' >
+      <div className='   flex justify-between	 bg-zinc-900		' >
+        <div className='m-10' >
+          <h1 className='' >London, UK</h1>
+          <p>Sunny</p>
+          <div className='pt-12 font-medium text-7xl' >
+            <p>34°C</p>
+          </div>
+        </div>
 
-      <div>
-        <img className='h-20'
-         src='https://th.bing.com/th/id/R.da459319a451f205108abeb608a615f8?rik=WEjk0C2cqyQy3Q&riu=http%3a%2f%2fimages.clipartpanda.com%2fweather-clipart-humid-weather-clip-art-2.jpg&ehk=JoDxRpGFGJjTWBRwRIkmzh2O6jXHatIK%2fJw9DzTVE1A%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1'
-        />
-        <h1>{whetherData?.main?.humidity}</h1>
+        <div>
+          <img className='mt-3 mb-3 mr-5 h-24 pl-4 '
+            src='https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_3-512.png'
+            alt='Sunny'
+          />
+          <div className='flex mr-7 ' >
+            <div className='pr-7' >
+              <p>Feels like</p>
+              <p>Wind</p>
+              <p>Humidity</p>
+              <p>Pressure</p>
+            </div>
+            <div className='' >
+              <p>22°C</p>
+              <p>2 m/s</p>
+              <p>16%</p>
+              <p>15 hPa</p>
+            </div>
+          </div>
+        </div>
+
+        {/* <div>
+  <p>34°C</p>
+</div> */}
+
       </div>
-
-<div>
-  <img src='https://www.mayonews.ie/resizer/800/-1/true/2024_04_10/Screenshot_%28706%29-1712739320095.png--the_start_of_summer__met_eireann_weather_u_turn_as_they_pinpoint_sun_blast.png?1712739320279' />
-  <h1>{whetherData?.main?.pressure}</h1>
-
-</div>
-
-<div>
-<img  
-src='https://th.bing.com/th/id/OIP.IoP_jBvFiAPp8PJQtWN7IwHaEK?rs=1&pid=ImgDetMain'
-/>
-
-<h1>{whetherData?.main?.temp}</h1>
-
-</div>
-
-      {/* <useWhetherData 
-      latitude = {cityData.coordinates.lat}
-      longitude = {cityData.coordinates.lat}
-      /> */}
-      {/* <h2> {cityData?.coordinates?.lat} </h2> */}
-      {/* <h2> {cityData?.coordinates?.lon} </h2> */}
-
     </div>
   )
 }

@@ -8,7 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import { useSelector } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 const columns = [
@@ -51,7 +51,7 @@ export default function TableComponent() {
 
 
     const rows = useSelector((store) => store.Countries.countryNames)
-    console.log('Rows Data'+rows);
+    console.log('Row Countries data',rows);
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
@@ -67,12 +67,6 @@ export default function TableComponent() {
 
     return (
         <div>
-
-            {/* {
-                rows.map((data)=>({
-                    cityid : data.geoname_id
-                }))
-            } */}
 
         <Paper sx={{ width: '100%', overflow: 'hidden' }}>
             <TableContainer sx={{ maxHeight: 440 }}>
