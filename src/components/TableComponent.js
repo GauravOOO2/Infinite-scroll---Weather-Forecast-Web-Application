@@ -51,7 +51,7 @@ export default function TableComponent() {
 
 
     const rows = useSelector((store) => store.Countries.countryNames)
-    console.log(rows);
+    console.log('Rows Data'+rows);
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);

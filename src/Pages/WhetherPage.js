@@ -41,7 +41,7 @@ const WhetherPage = () => {
     try {
       const data = await fetch(WhetherApiUrl + '&lat=' + cityData?.coordinates?.lat + '&lon=' + cityData?.coordinates?.lon);
       const jsondata = await data.json()
-      // console.log("Debug",jsondata)
+      console.log("Debug",jsondata)
       dispatch(updateWhetherState(jsondata))
 
     } catch (error) {
@@ -56,11 +56,11 @@ const WhetherPage = () => {
 
   return (
     <div>
-      <h1>{cityData.name} weather data</h1>
-      <h2> {cityData.name} </h2>
+      <h1>{cityData?.name} weather data</h1>
+      <h2> {cityData?.name} </h2>
 
       <div>
-        <img className='h-2'
+        <img className='h-20'
          src='https://th.bing.com/th/id/R.da459319a451f205108abeb608a615f8?rik=WEjk0C2cqyQy3Q&riu=http%3a%2f%2fimages.clipartpanda.com%2fweather-clipart-humid-weather-clip-art-2.jpg&ehk=JoDxRpGFGJjTWBRwRIkmzh2O6jXHatIK%2fJw9DzTVE1A%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1'
         />
         <h1>{whetherData?.main?.humidity}</h1>
