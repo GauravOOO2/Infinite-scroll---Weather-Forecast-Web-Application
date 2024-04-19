@@ -23,3 +23,28 @@ Introducing My project, a painstakingly designed weather application that utiliz
  - [https://openweathermap.org/current](https://openweathermap.org/current)
  - [Cities Data ](https://public.opendatasoft.com/explore/dataset/geonames-all-cities-with-a-population-1000/api/?disjunctive.cou_name_en&sort=name)
 
+
+## 🔥 Clone this Repository
+You need to write the following commands on the terminal screen(in vscode) so that you can run this project locally.
+
+```bash
+  git clone "https://github.com/GauravOOO2/Swiggy-Clone.git"
+```
+
+Go to the project directory
+
+```bash
+  cd Swiggy-Clone
+```
+
+Install React dependencies
+
+```bash
+  npm install
+```
+
+Run the React app following this commands
+
+```bash
+  npm start
+```
